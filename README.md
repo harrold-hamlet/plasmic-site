@@ -128,3 +128,50 @@ MIT
 ## Support
 
 For support, contact [your-email]
+
+## Core Packages (Plasmic + Next.js)
+- `@plasmicapp/loader-nextjs`
+- `@plasmicapp/loader-react`
+- `next`
+- `react`, `react-dom`
+- `tailwindcss`, `postcss`, `autoprefixer`
+- `next-seo`, `next-sitemap`
+- `typescript`, `eslint`, `@types/*`
+
+## Optional: shadcn/ui Integration
+If you want to use [shadcn/ui](https://ui.shadcn.com/) components, you should also install:
+- `@radix-ui/react-slot`
+- `class-variance-authority`
+- `clsx`
+- `lucide-react` (for icons)
+- `tailwind-merge`
+
+To add shadcn/ui components, run:
+```bash
+npx shadcn-ui@latest add [component]
+```
+
+If you are starting from this boilerplate and want to use shadcn/ui, install the required packages:
+```bash
+npm install @radix-ui/react-slot class-variance-authority clsx lucide-react tailwind-merge
+```
+
+## Plasmic Integration
+1. Create your project in Plasmic Studio.
+2. Add your project ID and token to `.env.local`.
+3. Register any custom code components in `plasmic-init.ts`.
+4. Use `<PlasmicComponent component="PageName" />` in your Next.js pages.
+
+## Deployment
+1. Push to GitHub
+2. Connect to Vercel
+3. Configure environment variables
+4. Deploy
+
+## Contributing
+1. Create a feature branch
+2. Make changes
+3. Submit a pull request
+
+## License
+MIT
