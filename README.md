@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Plasmic + shadcn/ui Boilerplate
 
-## Getting Started
+A modern, type-safe boilerplate for building websites with Next.js, Plasmic, and shadcn/ui. This template includes a 3-page site structure (Home, Services, Contact) with global Header and Footer components.
 
-First, run the development server:
+## Features
 
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- Plasmic integration for visual editing
+- SEO optimization
+- Responsive design
+- Global layout components
+
+## Prerequisites
+
+- Node.js 18.18.0 or later
+- npm or yarn
+- Plasmic account
+- Vercel account (for deployment)
+
+## Quick Start
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [your-repo-url]
+cd [your-project-name]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+```bash
+cp .env.example .env.local
+```
+Edit `.env.local` with your Plasmic credentials.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Start the development server:
+```bash
+npm run dev
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # App router pages
+├── components/
+│   ├── ui/                # shadcn/ui components
+│   ├── sections/          # Page sections
+│   └── layout/           # Global components
+├── lib/                  # Utilities
+└── styles/              # Global styles
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Development Workflow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. Initial Setup
 
-## Deploy on Vercel
+1. Create Plasmic project and get credentials
+2. Install shadcn/ui components as needed
+3. Set up global layout components
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 2. Building Pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create page components in Plasmic
+2. Register components in plasmic-init.ts
+3. Implement pages in app directory
+
+### 3. Adding New Features
+
+1. Create new section components
+2. Register with Plasmic
+3. Add to pages
+
+## Plasmic Integration
+
+1. Create project in Plasmic Studio
+2. Get project ID and token
+3. Add to .env.local
+4. Register components in plasmic-init.ts
+
+## shadcn/ui Components
+
+To add new shadcn/ui components:
+```bash
+npx shadcn-ui@latest add [component-name]
+```
+
+## Deployment
+
+1. Push to GitHub
+2. Connect to Vercel
+3. Configure environment variables
+4. Deploy
+
+## Cursor Composer Instructions
+
+When using Cursor Composer:
+
+1. For new sections:
+   - Create in components/sections/
+   - Include index.tsx, styles.ts, and types.ts
+   - Register in plasmic-init.ts
+
+2. For page implementation:
+   - Use PlasmicComponent in page.tsx
+   - Pass props for editable content
+
+3. For global components:
+   - Create in components/layout/
+   - Implement directly in layout.tsx
+
+## Contributing
+
+1. Create feature branch
+2. Make changes
+3. Submit pull request
+
+## License
+
+MIT
+
+## Support
+
+For support, contact [your-email]

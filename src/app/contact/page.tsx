@@ -1,14 +1,12 @@
-'use client';
-
 import { PlasmicComponent } from "@plasmicapp/loader-nextjs";
 
-export default function HomePage() {
+export default async function ContactPage() {
   return (
     <PlasmicComponent
-      component="Homepage"
+      component="ContactPage"
       componentProps={{
         // Add props for editable content
       }}
     />
   );
-}
+} 

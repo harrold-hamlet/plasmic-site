@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --max-width: 1200px;
+  --container-padding: 2rem;
+  --header-height: 80px;
+}
+
+@layer base {
+  body {
+    @apply text-gray-900;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[var(--max-width)] mx-auto px-[var(--container-padding)];
+  }
+} 
