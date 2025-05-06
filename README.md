@@ -162,16 +162,86 @@ npm install @radix-ui/react-slot class-variance-authority clsx lucide-react tail
 3. Register any custom code components in `plasmic-init.ts`.
 4. Use `<PlasmicComponent component="PageName" />` in your Next.js pages.
 
+## Setting Up Plasmic Code Components (Plasmic Host)
+
+To enable Plasmic Studio to use your custom code components, you must set up a special host route in your Next.js app:
+
+### Step 1: Create the `/plasmic-host` Route
+Create a file at `src/app/plasmic-host/page.tsx` with the following content:
+
+```tsx
+import * as React from "react";
+import { PlasmicCanvasHost } from "@plasmicapp/loader-nextjs";
+import { PLASMIC } from "@/plasmic-init";
+
+export default function PlasmicHost() {
+  return PLASMIC && <PlasmicCanvasHost />;
+}
+```
+
+### Step 2: Start Your App
+```bash
+npm run dev
+```
+
+### Step 3: Configure Plasmic Studio to Use Your Host
+1. Open your project in [Plasmic Studio](https://studio.plasmic.app/).
+2. Click the ellipsis menu by your project name (top-left), and select **Configure project**.
+3. Set the app host URL to:
+   ```
+   http://localhost:3000/plasmic-host
+   ```
+4. Press **Confirm**.
+
+Now, any code components you register in your codebase will show up in the Plasmic Studio Components panel and can be used visually in your pages.
+
+For more details, see the [Plasmic app-hosting guide](https://docs.plasmic.app/learn/app-hosting/).
+
+## Handling Images: Developer & Client Guide
+
+### For Developers
+- Code components (like Hero) should accept an `imageUrl` and `imageAlt` prop.
+- Use Next.js's `Image` component for optimized, responsive images.
+- Example usage in a component:
+  ```tsx
+  import Image from "next/image";
+  // ...
+  <Image src={imageUrl} alt={imageAlt} fill className="rounded-lg" />
+  ```
+- Register these props in `plasmic-init.ts` so they are editable in Plasmic Studio.
+- In `next.config.js`, add `studio.plasmic.app` to the `images.domains` array to allow Plasmic-hosted images.
+
+### For Clients (Content Editors)
+1. **Uploading Images:**
+   - In Plasmic Studio, open the Asset Manager (image icon in the left sidebar).
+   - Upload your image or use an existing one.
+2. **Setting the Image in a Component:**
+   - Select the component (e.g., Hero) on your page.
+   - In the right sidebar, find the `Image url` field.
+   - Paste the image URL from the Asset Manager or use a public image URL.
+   - Optionally, fill in the `Image alt` field for accessibility and SEO.
+3. **Preview:**
+   - You will see the image update live in Plasmic Studio and on your website after publishing.
+
+### Best Practices
+- Always provide descriptive alt text for images.
+- Use Plasmic's Asset Manager for easy uploads and management.
+- For advanced users: you can use local images by placing them in the `public` folder and referencing them as `/your-image.png`.
+- If you need to restrict image choices, developers can predefine allowed images and document their paths.
+
 ## Deployment
+
 1. Push to GitHub
 2. Connect to Vercel
 3. Configure environment variables
 4. Deploy
 
 ## Contributing
-1. Create a feature branch
+
+1. Create feature branch
 2. Make changes
-3. Submit a pull request
+3. Submit pull request
 
 ## License
+
 MIT
